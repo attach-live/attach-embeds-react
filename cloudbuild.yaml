@@ -1,0 +1,15 @@
+steps:
+  - name: gcr.io/cloud-builders/gsutil
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        ENVIRONMENT=$$(printf '%s' "$BRANCH_NAME" | sed 's/-.*//' | sed 's/[0-9]//g')
+        gsutil cp gs://attach-containers-secrets/$$ENVIRONMENT-npmrc .npmrc
+  - name: 'node:9-alpine'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        chmod +x ./hooks/build.sh
+        ./hooks/build.sh $BRANCH_NAME
