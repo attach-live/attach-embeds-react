@@ -1,7 +1,7 @@
 {
 	"name": "attach-embeds-react",
 	"version": "1.0.0",
-	"license": "UNLICENSED",
+	"license": "MIT",
 	"main": "build/index.js",
 	"module": "build/index.js",
 	"sideEffects": false,
