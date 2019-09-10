@@ -1,55 +1,55 @@
 {
-  "name": "@attach/attach-embeds-react",
-  "version": "1.0.0",
-  "license": "UNLICENSED",
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "sideEffects": false,
-  "files": [
-    "build/*"
-  ],
-  "description": "React components for Attach Embeds",
-  "author": "ATTACH dev-team <contact@attach.live>",
-  "homepage": "https://github.com/attach-live/attach-embeds-react#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/attach-live/attach-embeds-react.git"
-  },
-  "bugs": {
-    "url": "https://github.com/attach-live/attach-embeds-react/issues"
-  },
-  "keywords": [
-    "attach-live",
-    "attach",
-    "embeds"
-  ],
-  "dependencies": {
-    "nanoid": "^2.0.3"
-  },
-  "peerDependencies": {
-    "react": ">=15.0.0",
-    "@attach/attach-embeds": ">=1.0.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "scripts": {
-    "build": "yarn run build-clear && yarn run build-client",
-    "build-clear": "rm -rf build/ || rd /s /q build || echo dir not found",
-    "build-client": "babel source -d build"
-  }
+	"name": "attach-embeds-react",
+	"version": "1.0.0",
+	"license": "UNLICENSED",
+	"main": "build/index.js",
+	"module": "build/index.js",
+	"sideEffects": false,
+	"files": [
+		"build/*"
+	],
+	"description": "React components for Attach Embeds",
+	"author": "ATTACH dev-team <contact@attach.live>",
+	"homepage": "https://github.com/attach-live/attach-embeds-react#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/attach-live/attach-embeds-react.git"
+	},
+	"bugs": {
+		"url": "https://github.com/attach-live/attach-embeds-react/issues"
+	},
+	"keywords": [
+		"attach-live",
+		"attach",
+		"embeds"
+	],
+	"dependencies": {
+		"nanoid": "^2.0.3"
+	},
+	"peerDependencies": {
+		"react": ">=15.0.0",
+		"@attach/attach-embeds": ">=1.0.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.4.4",
+		"@babel/core": "^7.4.5",
+		"@babel/preset-env": "^7.4.5",
+		"@babel/preset-react": "^7.0.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,json,css,md}": [
+			"prettier --write",
+			"git add"
+		]
+	},
+	"scripts": {
+		"build": "yarn run build-clear && yarn run build-client",
+		"build-clear": "rm -rf build/ || rd /s /q build || echo dir not found",
+		"build-client": "babel source -d build"
+	}
 }
