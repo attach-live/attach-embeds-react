@@ -42,8 +42,8 @@ const embed = name => {
 					onLoad={this.onLoad}
 					src={`${path}#${querify({
 						...properties,
-						'instance-id': attach.getInstanceId(),
-						'unit-id': this.state.unitId,
+						'attach:instance-id': attach.getInstanceId(),
+						'attach:unit-id': this.state.unitId,
 					})}`}
 					style={{
 						display: 'block',
