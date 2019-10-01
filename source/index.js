@@ -4,7 +4,7 @@ import uuid from 'nanoid'
 import * as attach from '@attach/attach-embeds'
 
 // utilities
-import units from './units'
+import units, { basePath } from './units'
 // endregion
 
 // region embed
@@ -48,7 +48,7 @@ const embed = name => {
 				},
 			}
 
-			this.iframeRef.current.contentWindow.postMessage(JSON.stringify(message))
+			this.iframeRef.current.contentWindow.postMessage(JSON.stringify(message), basePath)
 		}
 
 		updateProperties() {
