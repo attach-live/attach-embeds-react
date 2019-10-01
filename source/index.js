@@ -5,7 +5,6 @@ import * as attach from '@attach/attach-embeds'
 
 // utilities
 import units from './units'
-import querify from './querify'
 // endregion
 
 // region embed
@@ -24,27 +23,60 @@ const embed = name => {
 	return class Embed extends React.Component {
 		constructor(props) {
 			super(props)
-			this.state = { visibility: 'hidden', unitId: uuid() }
+			this.state = { visibility: 'hidden' }
+			this.unitId = uuid()
+			this.iframeLoaded = false
+			this.iframeRef = React.createRef()
 			this.onLoad = this.onLoad.bind(this)
+			this.sendMessage = this.sendMessage.bind(this)
+			this.updateProperties = this.updateProperties.bind(this)
+		}
+
+		componentDidUpdate(prevProps, prevState) {
+			if (prevProps.properties !== this.props.properties) {
+				this.updateProperties()
+			}
+		}
+
+		sendMessage(type, data) {
+			const message = {
+				data,
+				meta: {
+					from: 'main',
+					to: name,
+					type,
+				},
+			}
+
+			this.iframeRef.current.contentWindow.postMessage(JSON.stringify(message))
+		}
+
+		updateProperties() {
+			if (this.iframeLoaded) {
+				this.sendMessage('UPDATE_PROPERTIES', { properties: this.props.properties })
+			}
 		}
 
 		onLoad() {
 			this.setState({ visibility: 'visible' })
+			this.iframeLoaded = true
+			this.sendMessage('START_EMBED', {
+				unitId: this.unitId,
+				instanceId: window.attachInstanceId,
+				properties: this.props.properties,
+			})
 		}
 
 		render() {
-			const { className = '', style = {}, properties = {} } = this.props
+			const { className = '', style = {} } = this.props
 
 			return (
 				<iframe
-					data-unit-id={this.state.unitId}
+					ref={this.iframeRef}
+					data-unit-id={this.unitId}
 					className={`attach-embed ${className}`}
 					onLoad={this.onLoad}
-					src={`${path}#${querify({
-						...properties,
-						'attach:instance-id': attach.getInstanceId(),
-						'attach:unit-id': this.state.unitId,
-					})}`}
+					src={path}
 					style={{
 						display: 'block',
 						width: '100%',

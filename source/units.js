@@ -3,7 +3,8 @@
 const prefix = PREFIX || ''
 
 // path
-const getPath = unit => `https://${prefix}embeds.attach.live/v1/${unit}.html`
+export const basePath = `https://${prefix}embeds.attach.live`
+const getPath = unit => `${basePath}/v1/${unit}.html`
 // endregion
 
 // region export
