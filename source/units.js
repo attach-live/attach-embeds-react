@@ -1,6 +1,6 @@
 // region setup
 // from webpack
-const prefix = PREFIX || ''
+const prefix = typeof PREFIX === 'string' && PREFIX === 'dev-' ? PREFIX : ''
 
 // path
 export const basePath = `https://${prefix}embeds.attach.live`
