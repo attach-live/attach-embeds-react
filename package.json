@@ -28,7 +28,7 @@
 	},
 	"peerDependencies": {
 		"react": ">=15.0.0",
-		"@attach/attach-embeds": ">=1.0.0"
+		"attach-embeds": ">=1.0.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.4.4",

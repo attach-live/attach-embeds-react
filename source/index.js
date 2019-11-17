@@ -1,7 +1,7 @@
 // region import
 import React from 'react'
 import uuid from 'nanoid'
-import * as attach from '@attach/attach-embeds'
+import * as attach from './attach-embeds'
 
 // utilities
 import units, { basePath } from './units'
