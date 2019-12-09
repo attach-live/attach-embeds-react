@@ -38,7 +38,10 @@ class App extends React.Component {
 		return (
 			<>
 				<div>
-					<Reactions />
+					<Reactions item="https://developers.attach.live" />
+				</div>
+				<div>
+					<Reactions properties={{ services: 'videos' }} />
 				</div>
 				<div>
 					<Preview />

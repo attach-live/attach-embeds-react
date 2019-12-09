@@ -30,10 +30,19 @@ const embed = name => {
 			this.onLoad = this.onLoad.bind(this)
 			this.sendMessage = this.sendMessage.bind(this)
 			this.updateProperties = this.updateProperties.bind(this)
+			this.getMergedProperties = this.getMergedProperties.bind(this)
+		}
+
+		getMergedProperties() {
+			const properties = { ...this.props.properties }
+			if (this.props.item) {
+				properties['attach:item'] = this.props.item
+			}
+			return properties
 		}
 
 		componentDidUpdate(prevProps, prevState) {
-			if (prevProps.properties !== this.props.properties) {
+			if (prevProps.properties !== this.props.properties || prevProps.item !== this.props.item) {
 				this.updateProperties()
 			}
 		}
@@ -53,7 +62,7 @@ const embed = name => {
 
 		updateProperties() {
 			if (this.iframeLoaded) {
-				this.sendMessage('UPDATE_PROPERTIES', { properties: this.props.properties })
+				this.sendMessage('UPDATE_PROPERTIES', { properties: this.getMergedProperties() })
 			}
 		}
 
@@ -63,7 +72,7 @@ const embed = name => {
 			this.sendMessage('START_EMBED', {
 				unitId: this.unitId,
 				instanceId: window.attachInstanceId,
-				properties: this.props.properties,
+				properties: this.getMergedProperties(),
 			})
 		}
 
