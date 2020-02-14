@@ -38,7 +38,10 @@ class App extends React.Component {
 		return (
 			<>
 				<div>
-					<Reactions />
+					<Reactions item="https://developers.attach.live" />
+				</div>
+				<div>
+					<Reactions properties={{ services: 'videos' }} />
 				</div>
 				<div>
 					<Preview />
@@ -53,18 +56,18 @@ class App extends React.Component {
 
 Embeds API, convenient re-export from `attach-embeds`
 
-## Reactions
+## Components
 
-React component.
+All components accept these common props:
 
-Props:
+- `className`, `style`
+- `properties` - object, set [properties](https://github.com/attach-live/attach-properties) local to the embed
+- `item` - same as setting `properties={{ 'attach:item': '...' }}`
 
-- `className`, `style` - forwarded to the iframe
+### Reactions
 
-## Preview
+Renders the reactions embed.
 
-React component.
+### Preview
 
-Props:
-
-- `className`, `style` - forwarded to the iframe
+Renders the preview embed.
