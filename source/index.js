@@ -57,4 +57,8 @@ const embed = name =>
 export { attach }
 export const Preview = embed('preview')
 export const Reactions = embed('reactions')
+export const Item = embed('item')
+export const Profile = embed('profile')
+export const Video = embed('video')
+export const Comment = embed('comment')
 // endregion
