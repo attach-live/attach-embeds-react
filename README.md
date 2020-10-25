@@ -27,7 +27,7 @@ class App extends React.Component {
 		if (!attach.isInitialized()) {
 			attach.setProperties({
 				'attach:item': `https://www.attach.live`,
-				'attach:reactions:services': ['comments', 'videos'],
+				'attach:reactions:hide-sections': ['comments', 'videos'],
 			})
 
 			attach.initialize()
@@ -41,7 +41,7 @@ class App extends React.Component {
 					<Reactions item="https://developers.attach.live" />
 				</div>
 				<div>
-					<Reactions properties={{ services: 'videos' }} />
+					<Reactions properties={{ hide-sections: 'videos' }} />
 				</div>
 				<div>
 					<Preview />
